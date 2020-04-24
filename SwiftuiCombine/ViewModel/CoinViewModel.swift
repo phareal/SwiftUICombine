@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct CoinViewModel {
+struct CoinViewModel : Hashable {
     private let coin: Coin
 
     var name: String {
@@ -16,7 +16,7 @@ struct CoinViewModel {
         return coin.price
     }
 
-    init(coin: Coin) {
+    init(_ coin: Coin) {
         self.coin = coin
     }
 }

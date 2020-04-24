@@ -10,3 +10,4 @@ struct CryptoData: Decodable {
     let coins: [Coin]
 
 }
+

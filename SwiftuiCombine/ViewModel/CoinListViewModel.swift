@@ -9,13 +9,15 @@ import Combine
 class CoinListViewModel: ObservableObject {
     private let cryptoService = CryptoService()
     @Published var coinViewModel = [CoinViewModel]()
+
     var cancellable: AnyCancellable?
 
     func fetchCoins(){
         cancellable = cryptoService.fetchCoins().sink(receiveCompletion: {_ in
 
         }, receiveValue: { cointainer in
-            self.coinViewModel = cointainer.data.coins.map { CoinViewModel(coin:$0) }
+            self.coinViewModel = cointainer.data.coins.map { CoinViewModel($0) }
+            print(self.coinViewModel)
         })
     }
 }

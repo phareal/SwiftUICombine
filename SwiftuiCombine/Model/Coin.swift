@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct Coin: Decodable {
+struct Coin: Decodable , Hashable {
     let name:String
     let price: String
 

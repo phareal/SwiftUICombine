@@ -21,6 +21,7 @@ class CryptoService {
     func fetchCoins() -> AnyPublisher<CrypToDataContainer, Error>{
         return  URLSession.shared.dataTaskPublisher(for: components.url!)
             .map{$0.data}
+                .receive(on: DispatchQueue.main)
             .decode(type: CrypToDataContainer.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
